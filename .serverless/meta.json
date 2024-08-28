@@ -1,0 +1,242 @@
+{
+  "C:\\Users\\ik071\\OneDrive\\Desktop\\Forgers\\rittaiManual\\mvp\\web-clipper": {
+    "versionSfCore": null,
+    "versionFramework": "4.2.4",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "default-aws-credential-resolver": "<REDACTED>"
+    },
+    "composeServiceName": null,
+    "servicePath": "C:\\Users\\ik071\\OneDrive\\Desktop\\Forgers\\rittaiManual\\mvp\\web-clipper",
+    "serviceConfigFileName": "serverless.yaml",
+    "service": {
+      "service": "ikitest",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs18.x",
+        "profile": "rittai-dev",
+        "stage": "dev",
+        "region": "us-east-1",
+        "versionFunctions": true,
+        "compiledCloudFormationTemplate": {
+          "AWSTemplateFormatVersion": "2010-09-09",
+          "Description": "The AWS CloudFormation template for this Serverless application",
+          "Resources": {
+            "ServerlessDeploymentBucket": {
+              "Type": "AWS::S3::Bucket",
+              "Properties": {
+                "BucketEncryption": {
+                  "ServerSideEncryptionConfiguration": [
+                    {
+                      "ServerSideEncryptionByDefault": {
+                        "SSEAlgorithm": "AES256"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "ServerlessDeploymentBucketPolicy": {
+              "Type": "AWS::S3::BucketPolicy",
+              "Properties": {
+                "Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "PolicyDocument": {
+                  "Statement": [
+                    {
+                      "Action": "s3:*",
+                      "Effect": "Deny",
+                      "Principal": "*",
+                      "Resource": [
+                        {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":s3:::",
+                              {
+                                "Ref": "ServerlessDeploymentBucket"
+                              },
+                              "/*"
+                            ]
+                          ]
+                        },
+                        {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":s3:::",
+                              {
+                                "Ref": "ServerlessDeploymentBucket"
+                              }
+                            ]
+                          ]
+                        }
+                      ],
+                      "Condition": {
+                        "Bool": {
+                          "aws:SecureTransport": false
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "Outputs": {
+            "ServerlessDeploymentBucketName": {
+              "Value": {
+                "Ref": "ServerlessDeploymentBucket"
+              },
+              "Export": {
+                "Name": "sls-ikitest-dev-ServerlessDeploymentBucketName"
+              }
+            }
+          }
+        },
+        "coreCloudFormationTemplate": {
+          "AWSTemplateFormatVersion": "2010-09-09",
+          "Description": "The AWS CloudFormation template for this Serverless application",
+          "Resources": {
+            "ServerlessDeploymentBucket": {
+              "Type": "AWS::S3::Bucket",
+              "Properties": {
+                "BucketEncryption": {
+                  "ServerSideEncryptionConfiguration": [
+                    {
+                      "ServerSideEncryptionByDefault": {
+                        "SSEAlgorithm": "AES256"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "ServerlessDeploymentBucketPolicy": {
+              "Type": "AWS::S3::BucketPolicy",
+              "Properties": {
+                "Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "PolicyDocument": {
+                  "Statement": [
+                    {
+                      "Action": "s3:*",
+                      "Effect": "Deny",
+                      "Principal": "*",
+                      "Resource": [
+                        {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":s3:::",
+                              {
+                                "Ref": "ServerlessDeploymentBucket"
+                              },
+                              "/*"
+                            ]
+                          ]
+                        },
+                        {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":s3:::",
+                              {
+                                "Ref": "ServerlessDeploymentBucket"
+                              }
+                            ]
+                          ]
+                        }
+                      ],
+                      "Condition": {
+                        "Bool": {
+                          "aws:SecureTransport": false
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "Outputs": {
+            "ServerlessDeploymentBucketName": {
+              "Value": {
+                "Ref": "ServerlessDeploymentBucket"
+              }
+            }
+          }
+        }
+      },
+      "myNextApplication": {
+        "component": "@sls-next/serverless-component@1.15.1",
+        "inputs": {
+          "bucketName": "serverless-next-767398144440",
+          "name": "serverless-next-func"
+        }
+      }
+    },
+    "serviceRawFile": "# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\r\n# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\r\n# org: koheiiki\r\n# # \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\r\n# app: test\r\nservice: ikitest\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs18.x\r\n  profile: rittai-dev\r\nmyNextApplication:\r\n  component: \"@sls-next/serverless-component@1.15.1\"\r\n  inputs:\r\n    bucketName: \"serverless-next-767398144440\"\r\n    name: \"serverless-next-func\"\r\n",
+    "command": [
+      "deploy"
+    ],
+    "options": {},
+    "error": null,
+    "params": {},
+    "machineId": "8d0873c0f899f5cbca38509b61697c2f",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "1d497763-a801-4b5b-a302-47c4fed3e981",
+    "orgName": "koheiiki",
+    "userId": "p0tCc70kX5pBFJYSVq",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "koheiiki",
+    "subscription": null,
+    "userEmail": "kohei.iki@forgers.co.jp",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "767398144440",
+    "projectType": "framework",
+    "versionSf": "4.2.4",
+    "serviceProviderAwsCfStackName": "ikitest-dev",
+    "integrations": {},
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:767398144440:stack/ikitest-dev/a1042650-651f-11ef-8b3a-0e3c18f7ab13",
+    "serviceProviderAwsCfStackCreated": "2024-08-28T09:26:39.212Z",
+    "serviceProviderAwsCfStackUpdated": "2024-08-28T09:27:07.877Z",
+    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "ikitest-dev-serverlessdeploymentbucket-zzdawjbrxu3y",
+        "ExportName": "sls-ikitest-dev-ServerlessDeploymentBucketName"
+      }
+    ]
+  }
+}
