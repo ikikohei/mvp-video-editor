@@ -1,7 +1,7 @@
 import type createFFmpegCore from "@ffmpeg/core";
 
 const ctx: Worker = self as any;
-(ctx as any).importScripts("/manual/video_edit_2/ffmpeg-core.js");
+(ctx as any).importScripts("/ffmpeg-core.js");
 // (ctx as any).importScripts("/gifsicle.js");
 
 class FFmpeg {
@@ -37,15 +37,15 @@ class FFmpeg {
   async createCore() {
     try {
       return await createFFmpegCore({
-        mainScriptUrlOrBlob: "/manual/video_edit_2/ffmpeg-core.js",
+        mainScriptUrlOrBlob: "/ffmpeg-core.js",
         printErr: (message) => this.log(message),
         print: (message) => this.log(message),
         locateFile: (path, prefix) => {
           if (path.endsWith("ffmpeg-core.wasm")) {
-            return "/manual/video_edit_2/ffmpeg-core.wasm";
+            return "/ffmpeg-core.wasm";
           }
           if (path.endsWith("ffmpeg-core.worker.js")) {
-            return "/manual/video_edit_2/ffmpeg-core.worker.js";
+            return "/ffmpeg-core.worker.js";
           }
           return prefix + path;
         },
